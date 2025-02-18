@@ -8,7 +8,7 @@ import (
 
 var t_prefix = []string{"t"}
 
-// content is able to have #UpperCasedTag, But the ["t"] should only have lowercase.
+// content is able to have #UpperCasedTag, But the ["t"] must in lowercase.
 // if the event has one with uppercased string on t tag, Reject it.
 func NoUpperCaseValueOfTTag(_ context.Context, event *nostr.Event) (reject bool, msg string) {
 	t_tags := event.Tags.GetAll(t_prefix)
@@ -16,7 +16,7 @@ func NoUpperCaseValueOfTTag(_ context.Context, event *nostr.Event) (reject bool,
 		val := tag.Value()
 		lowerCasedValue := strings.ToLower(val)
 		if val != lowerCasedValue {
-			return true, "t tag value should onlu in lowercase."
+			return true, "t tag value must in lowercase."
 		}
 	}
 
