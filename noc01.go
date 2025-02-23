@@ -23,7 +23,7 @@ func NOC01_FilterReject(ctx context.Context, filter nostr.Filter) (reject bool, 
 	hasTTag := t_ok && len(t) > 0
 
 	// if it doesn't have one of these tags, reject.
-	if !hasIDs || !hasAuthors || !hasETag || !hasPTag || !hasTTag {
+	if !hasIDs && !hasAuthors && !hasETag && !hasPTag && !hasTTag {
 		return true, "your filter doesn't has one of the required field as defined on NOC-01."
 	} else {
 		return false, ""
